@@ -15,6 +15,11 @@
   "bugs": {
     "url": "https://github.com/D1gger1/Tracker-Matches/issues"
   },
-  "homepage": "https://github.com/D1gger1/Tracker-Matches#readme"
+  "homepage": "https://github.com/D1gger1/Tracker-Matches#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.4"
+  }
 }
-
