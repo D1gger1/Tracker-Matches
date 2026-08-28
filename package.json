@@ -1,0 +1,20 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "tracker matches",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D1gger1/Tracker-Matches.git"
+  },
+  "keywords": [
+    "tracker"
+  ],
+  "author": "Max Kotlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D1gger1/Tracker-Matches/issues"
+  },
+  "homepage": "https://github.com/D1gger1/Tracker-Matches#readme"
+}
+
