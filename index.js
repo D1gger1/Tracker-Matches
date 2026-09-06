@@ -12,6 +12,9 @@ const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
 
+const pullupRoutes = require('./routes/pullups');
+app.use('/api/pullups', pullupRoutes);
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
