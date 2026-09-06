@@ -17,14 +17,13 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', async function(next) {
-    if(!this.isModified('password')) return next();
+    if(!this.isModified('password')) return;
 
     try{
         const salt = await bcryptjs.genSalt(10);
         this.password = await bcryptjs.hash(this.password, salt);
-        next();
     } catch(err) {
-        next(err);
+        throw err;
     }
 })
 
