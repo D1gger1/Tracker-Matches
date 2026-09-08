@@ -11,7 +11,6 @@ const port = 3000;
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-
 const pullupRoutes = require('./routes/pullups');
 app.use('/api/pullups', pullupRoutes);
 
