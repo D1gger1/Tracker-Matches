@@ -1,13 +1,10 @@
-import './App.css'
-
 function App() {
-
   return (
-    <>
-      <div>
-        <h1>Регистрация</h1>
-      </div>
-    </>
+    <main className="flex min-h-screen items-center justify-center bg-zinc-950">
+      <h1 className="text-4xl font-bold text-lime-300">
+        Регистрация
+      </h1>
+    </main>
   )
 }
 
