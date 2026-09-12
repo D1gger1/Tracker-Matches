@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
+
 export function RegisterPage() {
+    const [authMode, setAuthMode] = useState<'register' | 'login'>('register');
     return (
         <div className='flex min-h-screen flex-col bg-zinc-950 px-10 py-6 text-zinc-100'>
             <header className='flex items-center gap-3 '>
@@ -14,14 +18,45 @@ export function RegisterPage() {
             </header>
             <main className='flex flex-1 items-center py-8'>
                 <section className='mx-auto w-full max-w-md '>
-                    <div className='mb-4 text-xs font-bold tracking-widest text-lime-300'>
+                    <div className='mb-4'>
                         <p className='text-lime-300 text-xs font-bold py-4' > НАЧНЁМ ТРЕНИРОВКУ </p>
-                        <h1 className='font-bold text-3xl'>Создать аккаунт</h1>
-                        <p className=' text-zinc-400 py-3' >Сохраняйте подходы и наблюдайте, как растёт результат.</p>
+                        <h1 className='font-bold text-3xl'>
+                            {authMode === 'register' ? ' Создать аккаунт' : 'Войти в аккаунт'}
+                        </h1>
+                        <p className=' text-zinc-400 py-3' >
+                            {authMode === 'register' ? 'Сохраняйте подходы и наблюдайте, как растёт результат.' : 'Войдите, чтобы продолжить отслеживать тренировки.'}
+                        </p>
                     </div>
-                    <div className="registr-btns grid grid-cols-2 rounded-xl border border-zinc-800 bg-zinc-900 p-1">
-                        <button type='button' className='rounded-lg bg-zinc-800 px-4 py-2 text-sm font-semibold text-zinc-100 shadow-sm'>Регистрация</button>
-                        <button type='button' className='rounded-lg px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-200 '>Войти</button>
+                    <div className="relative grid grid-cols-2 rounded-xl border border-zinc-800 bg-zinc-900 p-1">
+                        <span
+                            aria-hidden="true"
+                            className={`pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-lg bg-zinc-800 shadow-sm transition-transform duration-300 ease-out ${authMode === 'login' ? 'translate-x-full' : 'translate-x-0'
+                                }`}
+                        />
+
+                        <button
+                            type="button"
+                            aria-pressed={authMode === 'register'}
+                            onClick={() => setAuthMode('register')}
+                            className={`relative z-10 rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${authMode === 'register'
+                                    ? 'text-zinc-100'
+                                    : 'text-zinc-500 hover:text-zinc-200'
+                                }`}
+                        >
+                            Регистрация
+                        </button>
+
+                        <button
+                            type="button"
+                            aria-pressed={authMode === 'login'}
+                            onClick={() => setAuthMode('login')}
+                            className={`relative z-10 rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-300 ${authMode === 'login'
+                                    ? 'text-zinc-100'
+                                    : 'text-zinc-500 hover:text-zinc-200'
+                                }`}
+                        >
+                            Войти
+                        </button>
                     </div>
                     <form className="mt-6 space-y-4">
                         <div className='space-y-2'>
@@ -41,7 +76,9 @@ export function RegisterPage() {
                             <input type="password"
                                 id="password"
                                 name="password"
-                                autoComplete="new-password"
+                                autoComplete={
+                                    authMode === 'register' ? 'new-password' : 'current-password'
+                                }
                                 required
                                 className="h-12 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-4 text-sm text-zinc-100 outline-none transition-colors  placeholder:text-zinc-600 focus:border-lime-300" />
                         </div>
@@ -49,7 +86,7 @@ export function RegisterPage() {
                             type="submit"
                             className="h-12 w-full rounded-xl bg-lime-300 px-4 text-sm font-bold text-zinc-950 transition-colors hover:bg-lime-200 active:bg-lime-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-300"
                         >
-                            Создать аккаунт
+                            {authMode === 'register' ? 'Создать аккаунт' : 'Войти'}
                         </button>
                     </form>
                 </section>
